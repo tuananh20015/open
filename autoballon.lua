@@ -224,6 +224,7 @@ for i,v in pairs(getInfo("Inventory").Misc) do
 end
 local startTime = os.time()
 while getgenv().MoneyPrinter.autoBalloons do task.wait()
+	Slingshot.fireWeapon()
 	if getgenv().MoneyPrinter.autoPresents then getPresents() end
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
 		if Balloon.Id then
