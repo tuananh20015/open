@@ -228,33 +228,18 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
 		if Balloon.Id then
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
-				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
-				local breakableId = getBalloonUID(getCurrentZone())
-				if breakableId == "Skip" then break end
 				HRP.CFrame = CFrame.new(Balloon.LandPosition)
 				Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
 				HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
 				Slingshot.fireWeapon()
 				Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
+				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
+				local breakableId = getBalloonUID(getCurrentZone())
+				if breakableId == "Skip" then break end
 				if breakableId then
 					HRP.CFrame = CFrame.new(Balloon.LandPosition)
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
-					HRP.CFrame = CFrame.new(Balloon.LandPosition)
-					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
-					HRP.CFrame = CFrame.new(Balloon.LandPosition)
-					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
-					HRP.CFrame = CFrame.new(Balloon.LandPosition)
-					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
 				elseif not Balloon.Popped then
-					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
-					Slingshot.fireWeapon()
-					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
-					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
-					Slingshot.fireWeapon()
-					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
-					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
-					Slingshot.fireWeapon()
-					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
 					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
 					Slingshot.fireWeapon()
 					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
