@@ -228,11 +228,7 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
 		if Balloon.Id then
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
-				HRP.CFrame = CFrame.new(Balloon.LandPosition)
-				Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
-				HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
 				Slingshot.fireWeapon()
-				Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
 				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
 				local breakableId = getBalloonUID(getCurrentZone())
 				if breakableId == "Skip" then break end
