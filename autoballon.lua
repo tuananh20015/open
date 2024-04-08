@@ -227,6 +227,7 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 	Slingshot.fireWeapon()
 	if getgenv().MoneyPrinter.autoPresents then getPresents() end
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
+		Slingshot.fireWeapon()
 		if Balloon.Id then
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
 				Slingshot.fireWeapon()
