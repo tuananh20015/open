@@ -224,20 +224,16 @@ for i,v in pairs(getInfo("Inventory").Misc) do
 end
 local startTime = os.time()
 while getgenv().MoneyPrinter.autoBalloons do task.wait()
-	Slingshot.fireWeapon()
 	if getgenv().MoneyPrinter.autoPresents then getPresents() end
 	for _,Balloon in pairs(Library.Network.Invoke("BalloonGifts_GetActiveBalloons")) do task.wait(0.03)
-		Slingshot.fireWeapon()
 		if Balloon.Id then
 			while Library.Network.Invoke("BalloonGifts_GetActiveBalloons")[Balloon.Id] do task.wait(0.03)
-				Slingshot.fireWeapon()
 				if not getTool() then equipTool(getgenv().MoneyPrinter.toolName) end
 				local breakableId = getBalloonUID(getCurrentZone())
 				if breakableId == "Skip" then break end
 				if breakableId then
 					HRP.CFrame = CFrame.new(Balloon.LandPosition)
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
-					Slingshot.fireWeapon()
 				elseif not Balloon.Popped then
 					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
 					Slingshot.fireWeapon()
