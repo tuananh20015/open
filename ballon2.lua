@@ -249,9 +249,6 @@ while getgenv().MoneyPrinter.autoBalloons do task.wait()
 					Library.Network.Fire("Breakables_PlayerDealDamage", breakableId)
 					Slingshot.fireWeapon()
 				elseif not Balloon.Popped then
-					HRP.CFrame = CFrame.new(Balloon.Position + Vector3.new(0,30,0))
-					Slingshot.fireWeapon()
-					Library.Network.Fire("BalloonGifts_BalloonHit", Balloon.Id)
 				end
 			end
 		end
